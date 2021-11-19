@@ -17,7 +17,7 @@ def login(browser: Chrome):
     signin_button = browser.find_element_by_xpath("//a[contains(@href, 'accounts')]")
     signin_button.click()
 
-    time.sleep(1)
+    time.sleep(10)
     rsleep(2000)
     
     email_input = browser.find_element_by_css_selector('input[type=email]')
@@ -26,7 +26,7 @@ def login(browser: Chrome):
         email_input.send_keys(letter)
         rsleep()
     
-    time.sleep(1)
+    time.sleep(10)
     rsleep(2000)
     
     next_button = browser.find_elements_by_css_selector('button')[2]
@@ -40,7 +40,7 @@ def login(browser: Chrome):
         password_input.send_keys(letter)
         rsleep(1000)    
 
-    time.sleep(4)   
+    time.sleep(10)   
     rsleep(2000)
     
     next_button = browser.find_elements_by_css_selector("button")[1]
