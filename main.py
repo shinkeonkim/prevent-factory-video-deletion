@@ -78,14 +78,16 @@ def add_comment(browser: Chrome, comment: str):
 if __name__ == "__main__":
     url = "https://www.youtube.com/watch?v=oiQUD5WBChk"
     message = "팩토리님은 천재에요~❤️"
-    try:
+    try:      
+        chrome_driver = os.path.join('chromedriver')
+
         chrome_options = ChromeOptions()
         chrome_options.add_argument('--headless')               # headless
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.add_argument('--disable-gpu')
 
-        browser = Chrome('./chromedriver', options=chrome_options)
+        browser = Chrome(chrome_driver, options=chrome_options)
         browser.get("https://www.youtube.com")
         login(browser)
         time.sleep(1)
