@@ -32,9 +32,9 @@ def login(browser: Chrome):
     next_button = browser.find_elements_by_css_selector('button')[2]
     rsleep(2000)
     next_button.click()
+    time.sleep(10)
     rsleep(2000)
-        
-    
+
     password_input = browser.find_element_by_css_selector('input[type=password]')
     for letter in password:
         password_input.send_keys(letter)
@@ -62,9 +62,9 @@ def move_to(browser : Chrome, link: str):
 
 
 def add_comment(browser: Chrome, comment: str):
-    time.sleep(25)
-    browser.execute_script("window.scrollTo(0, 600)") 
-    browser.get_screenshot_as_file("test_screenshot.png")
+    time.sleep(60)
+    browser.execute_script("window.scrollTo(0, 600)")
+    browser.save_screenshot('screen.png')
     comment_input = browser.find_element_by_css_selector("div#placeholder-area")
 
     entering_comment_actions = ActionChains(browser)
@@ -87,7 +87,7 @@ def add_comment(browser: Chrome, comment: str):
 if __name__ == "__main__":
     url = "https://www.youtube.com/watch?v=oiQUD5WBChk"
     message = "팩토리님은 천재에요~❤️"
-    chrome_driver = os.path.join('chromedriver')
+    chrome_driver = os.path.join('./chromedriver')
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
 
     chrome_options = ChromeOptions()
