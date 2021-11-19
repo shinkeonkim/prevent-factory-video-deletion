@@ -77,7 +77,7 @@ def add_comment(browser: Chrome, comment: str):
         entering_comment_actions.pause(wait_time)
     entering_comment_actions.perform()
     
-    time.sleep(10)
+    time.sleep(60)
     rsleep(1000)
     
     send_comment_button = browser.find_element_by_id('submit-button')
