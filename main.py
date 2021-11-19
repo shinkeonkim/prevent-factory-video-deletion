@@ -61,7 +61,8 @@ def move_to(browser : Chrome, link: str):
     time.sleep(4)
 
 
-def add_comment(browser: Chrome, comment: str):    
+def add_comment(browser: Chrome, comment: str):
+    time.sleep(10) 
     comment_input = browser.find_element_by_css_selector("div#placeholder-area")
     
     entering_comment_actions = ActionChains(browser)
