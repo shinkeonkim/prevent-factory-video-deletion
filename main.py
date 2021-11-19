@@ -23,6 +23,9 @@ def login(browser: Chrome):
         email_input.send_keys(letter)
         rsleep()
     
+    time.sleep(2)   
+    rsleep(2000)
+     
     next_button = browser.find_elements_by_css_selector('button')[2]
     rsleep(2000)
     next_button.click()
@@ -34,10 +37,14 @@ def login(browser: Chrome):
         password_input.send_keys(letter)
         rsleep(1000)    
 
+    time.sleep(2)   
+    rsleep(2000)
+    
     next_button = browser.find_elements_by_css_selector("button")[1]
     rsleep(2000)
     time.sleep(random.randint(0, 2000)/1000)    
     next_button.click()
+    time.sleep(2)   
     rsleep(2000)
     
     confirm_button = browser.find_elements_by_css_selector("div[role=button]")
