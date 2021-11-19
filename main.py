@@ -87,7 +87,7 @@ def add_comment(browser: Chrome, comment: str):
 if __name__ == "__main__":
     url = "https://www.youtube.com/watch?v=oiQUD5WBChk"
     message = "팩토리님은 천재에요~❤️"
-    chrome_driver = os.path.join('./chromedriver')
+    chrome_driver = os.path.join('chromedriver')
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
 
     chrome_options = ChromeOptions()
