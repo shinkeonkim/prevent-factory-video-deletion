@@ -1,5 +1,7 @@
 # prevent-factory-video-deletion
 
+깃헙액션에서 유튜브 크롤링이 원할하지 않아, 작동하지 않습니다. :sob:
+
 ![https://img.youtube.com/vi/oiQUD5WBChk/0.jpg](https://www.youtube.com/watch?v=oiQUD5WBChk)
 
 이 영상을 지워지지 않게 하겠습니다.
