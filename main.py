@@ -62,9 +62,10 @@ def move_to(browser : Chrome, link: str):
 
 
 def add_comment(browser: Chrome, comment: str):
-    time.sleep(10)
-    comment_input = browser.find_element_by_css_selector("div#placeholder-area")
+    time.sleep(25)
+    browser.execute_script("window.scrollTo(0, 600)") 
     browser.get_screenshot_as_file("test_screenshot.png")
+    comment_input = browser.find_element_by_css_selector("div#placeholder-area")
 
     entering_comment_actions = ActionChains(browser)
     entering_comment_actions.move_to_element(comment_input)
