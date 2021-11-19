@@ -16,6 +16,9 @@ def login(browser: Chrome):
     
     signin_button = browser.find_element_by_xpath("//a[contains(@href, 'accounts')]")
     signin_button.click()
+
+    time.sleep(1)
+    rsleep(2000)
     
     email_input = browser.find_element_by_css_selector('input[type=email]')
     
@@ -23,21 +26,21 @@ def login(browser: Chrome):
         email_input.send_keys(letter)
         rsleep()
     
-    time.sleep(2)   
+    time.sleep(1)
     rsleep(2000)
-     
+    
     next_button = browser.find_elements_by_css_selector('button')[2]
     rsleep(2000)
     next_button.click()
-    time.sleep(2)
     rsleep(2000)
         
+    
     password_input = browser.find_element_by_css_selector('input[type=password]')
     for letter in password:
         password_input.send_keys(letter)
         rsleep(1000)    
 
-    time.sleep(2)   
+    time.sleep(4)   
     rsleep(2000)
     
     next_button = browser.find_elements_by_css_selector("button")[1]
@@ -55,14 +58,10 @@ def login(browser: Chrome):
 
 def move_to(browser : Chrome, link: str):
     browser.get(link)
+    time.sleep(4)
 
 
-def add_comment(browser: Chrome, comment: str):
-    video = browser.find_element_by_css_selector('video.html5-main-video')
-    video.click()
-    time.sleep(3)
-    
-    
+def add_comment(browser: Chrome, comment: str):    
     comment_input = browser.find_element_by_css_selector("div#placeholder-area")
     
     entering_comment_actions = ActionChains(browser)
@@ -85,23 +84,33 @@ def add_comment(browser: Chrome, comment: str):
 if __name__ == "__main__":
     url = "https://www.youtube.com/watch?v=oiQUD5WBChk"
     message = "팩토리님은 천재에요~❤️"
-    try:      
-        chrome_driver = os.path.join('chromedriver')
+    chrome_driver = os.path.join('./chromedriver')
+    user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
 
-        chrome_options = ChromeOptions()
-        chrome_options.add_argument('--headless')               # headless
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        chrome_options.add_argument('--disable-gpu')
+    chrome_options = ChromeOptions()
+    chrome_options.add_argument('--window-size=1920,1080')
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--proxy-server='direct://'")
+    chrome_options.add_argument("--proxy-bypass-list=*")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--ignore-certificate-errors')
+    chrome_options.add_argument('--allow-running-insecure-content')
+    chrome_options.add_argument(f'user-agent={user_agent}')
 
-        browser = Chrome(chrome_driver, options=chrome_options)
-        browser.get("https://www.youtube.com")
+    browser = Chrome(chrome_driver, options=chrome_options)
+    browser.get("https://www.youtube.com")
+    try:
         login(browser)
         time.sleep(1)
         rsleep(2000)
         move_to(browser, url)
         add_comment(browser, message)
         time.sleep(2)
+        print("댓글이 달렸습니다.")
     except Exception as e:
         print(e)
     finally:
