@@ -1,8 +1,9 @@
 name: crawler
 
 on:
-  schedule:
-    - cron: "50 * * * *"
+# 작동 안함으로 schedule 비활성화
+#   schedule:
+#       - cron: "50 * * * *"
   workflow_dispatch:
 
 jobs:
